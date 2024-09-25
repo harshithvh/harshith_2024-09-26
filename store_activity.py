@@ -9,7 +9,7 @@ def store_activity_report(store_id):
     if not store:
         return jsonify({"error": "Store not found."}), 404
 
-    end_date = datetime(2023, 1, 30, 23, 59, 59)
+    end_date = datetime.utcnow()
     start_date = end_date - timedelta(days=30)
 
     store_data = Store.query.options(
