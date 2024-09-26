@@ -2,7 +2,7 @@
 Backend service to generate report of uptime and downtimes for all Stores.
 
 ## Uptime and Downtime Calculation
-- terate through chronologically ordered poll data
+- Iterate through chronologically ordered poll data
 - Calculate time deltas between polls and assign to uptime or downtime
 - Extrapolate status for gaps between polls and business hours
 
@@ -18,8 +18,10 @@ Backend service to generate report of uptime and downtimes for all Stores.
 4. Assumptions to be avoided as much as possible
 5. Avoid/Reduce fields with the same meaning - uptime_last_hour/day/week
 6. Implement versioning for the API to allow for future changes - v1/v2
+7. Add squadcast or similar alerts whereever necessary
 
 ## Edge Cases Covered
 1. Used Math.ceil for worst cases - uptime and downtime calculations
 2. Used delta to fill in the time gaps - status poll
 3. Used joinload() for data fetching in a single query - DB load
+4. Used current status = prev for store(s) that do not have business hours for a particular day(s).
